@@ -104,7 +104,7 @@
     --ease:cubic-bezier(.16,.84,.44,1);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:hidden;overscroll-behavior-x:none;width:100%;}
   body{
     font-family:'Inter',sans-serif;
     background:var(--cream);
@@ -112,6 +112,9 @@
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    overscroll-behavior-x:none;
+    width:100%;
+    max-width:100vw;
   }
   ::selection{background:var(--gold);color:var(--ink);}
   h1,h2,h3,h4{font-family:'Fraunces',serif;color:var(--ink);font-weight:600;letter-spacing:-0.01em;}
@@ -156,21 +159,6 @@
   .btn-dark:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(13,33,29,0.6);}
   .btn-block{width:100%;}
 
-  /* ---------- geo banner ---------- */
-  .geo-banner{
-    background:var(--ink);color:var(--cream);font-size:13.5px;padding:11px 0;position:relative;z-index:60;
-    border-bottom:1px solid rgba(255,255,255,0.08);
-  }
-  .geo-banner .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;}
-  #geoMessage{opacity:0.85;font-weight:400;}
-  .geo-switch{display:flex;gap:8px;flex-wrap:wrap;}
-  .geo-switch button{
-    background:transparent;border:1px solid rgba(255,255,255,0.22);padding:6px 14px;border-radius:100px;
-    font-size:12px;font-weight:500;cursor:pointer;color:var(--cream);transition:all .3s var(--ease);
-  }
-  .geo-switch button:hover{border-color:var(--gold);color:var(--gold-light);}
-  .geo-switch button.active{background:var(--gold);border-color:var(--gold);color:#241a08;font-weight:700;}
-
   /* ---------- nav ---------- */
   header{position:sticky;top:0;z-index:59;transition:all .5s var(--ease);background:rgba(10,21,18,0.55);backdrop-filter:blur(14px) saturate(140%);}
   header.solid{background:rgba(10,21,18,0.92);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 8px 30px -12px rgba(0,0,0,0.4);}
@@ -178,12 +166,23 @@
   header.solid nav.wrap{height:70px;}
   .logo{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--white);letter-spacing:0.2px;white-space:nowrap;}
   .logo em{font-style:italic;color:var(--gold-light);}
-  .navlinks{display:flex;gap:36px;list-style:none;align-items:center;}
+  .navlinks{display:flex;gap:26px;list-style:none;align-items:center;}
   .navlinks a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.82);position:relative;padding:4px 0;}
   .navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold-light);transition:width .35s var(--ease);}
   .navlinks a:hover::after{width:100%;}
   .navlinks a:hover{color:var(--white);}
   .navToggle{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .geo-inline{display:flex;align-items:center;gap:8px;}
+  .geo-inline-text{font-size:12px;color:rgba(255,255,255,0.6);white-space:nowrap;font-weight:400;}
+  .nav-cta{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241a08;
+    padding:10px 22px;border-radius:100px;font-weight:700;font-size:13.5px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    box-shadow:0 10px 24px -8px rgba(205,161,91,0.5);
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(205,161,91,0.65);}
 
   /* ---------- hero ---------- */
   .hero{
@@ -440,16 +439,7 @@
   .sticky-cta-text b{color:var(--gold-light);}
   .sticky-cta .btn{padding:12px 26px;font-size:13.5px;}
 
-  /* ---------- quick contact chips (light card, matches rest of site) ---------- */
-  .contact-card{background:var(--white);border:1px solid rgba(13,33,29,0.08);}
-  .quick-contact-label{font-size:14px;color:#5c6864;font-weight:400;margin-bottom:18px;line-height:1.55;}
-  .quick-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
-  .quick-chip{
-    background:rgba(47,143,125,0.07);border:1px solid rgba(47,143,125,0.2);color:var(--emerald);
-    padding:10px 16px;border-radius:100px;font-size:13px;font-weight:600;transition:all .3s var(--ease);
-  }
-  .quick-chip:hover{background:rgba(205,161,91,0.12);border-color:var(--gold);color:var(--ink);transform:translateY(-2px);}
-
+  /* ---------- contact CTA ---------- */
   .whatsapp-pill-wrap{display:flex;justify-content:center;}
   .whatsapp-pill{
     display:inline-flex;align-items:center;gap:10px;
@@ -459,19 +449,6 @@
   }
   .whatsapp-pill:hover{transform:translateY(-2px);box-shadow:0 16px 34px -8px rgba(205,161,91,0.55);}
   .whatsapp-pill svg{color:#1f8a4c;flex-shrink:0;}
-
-  .or-divider{display:flex;align-items:center;gap:14px;margin:22px 0;color:rgba(13,33,29,0.3);font-size:12px;text-transform:uppercase;letter-spacing:1px;}
-  .or-divider::before,.or-divider::after{content:"";flex:1;height:1px;background:rgba(13,33,29,0.1);}
-  .email-toggle{
-    background:none;border:none;color:var(--emerald);font-size:13.5px;font-weight:600;cursor:pointer;padding:0;
-    text-decoration:underline;text-underline-offset:3px;display:block;margin:0 auto;
-  }
-  .email-form{margin-top:18px;}
-  .contact-card input[type=text],.contact-card input[type=email]{
-    background:var(--sand-light);border:1.5px solid #e1d9c6;color:var(--ink);
-  }
-  .contact-card input::placeholder{color:#9aa5a2;}
-  .contact-card input:focus{border-color:var(--emerald);}
 
   /* ---------- floating whatsapp button ---------- */
   .whatsapp-fab{
@@ -538,9 +515,23 @@
   .lm-success{display:none;align-items:center;gap:10px;color:var(--emerald);font-weight:700;font-size:14px;padding:10px 0;}
   .lm-success.show{display:flex;}
   .lm-form.hide{display:none;}
+  .lm-cta{
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241a08;border:none;
+    padding:12px 22px;border-radius:10px;font-weight:700;font-size:13.5px;cursor:pointer;
+    transition:transform .3s var(--ease);
+  }
+  .lm-cta:hover{transform:translateY(-2px);}
+  .lm-cta.hide{display:none;}
+
 
   .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start;}
   @media (max-width:900px){.ig-grid{grid-template-columns:1fr;}}
+
+  @media (max-width:1180px){
+    .navlinks{gap:16px;}
+    .nav-right{gap:12px;}
+    .geo-inline-text{display:none;}
+  }
 
   @media (max-width:900px){
     .grid-3{grid-template-columns:1fr;}
@@ -552,6 +543,10 @@
     .navlinks{display:none;}
     .navToggle{display:block;}
     .logo{font-size:15px;}
+    .nav-right{gap:12px;}
+    .geo-inline-text{display:none;}
+    .geo-select-wrap .geo-select{padding:7px 26px 7px 10px;font-size:11.5px;}
+    .nav-cta{padding:9px 16px;font-size:12.5px;}
     section{padding:80px 0;}
     .hero-facts{gap:0;}
     .hero-facts div{padding-right:22px;margin-right:22px;}
@@ -564,34 +559,33 @@
 </head>
 <body>
 
-<div class="geo-banner">
-  <div class="wrap">
-    <span id="geoMessage">📍 Detecting your location to personalize your relocation info…</span>
-    <div class="geo-select-wrap">
-      <!-- Add more <option> entries here as more countries are supported (map the value in REGIONS + TAX_RATES in the script below). -->
-      <select class="geo-select" id="geoSelect">
-        <option value="us">🇺🇸 United States</option>
-        <option value="ca">🇨🇦 Canada</option>
-        <option value="gb">🇬🇧 United Kingdom</option>
-        <option value="default">🌐 Other Country</option>
-      </select>
-    </div>
-  </div>
-</div>
-
 <header id="siteHeader">
   <nav class="wrap">
     <div class="logo">Seb Nehme <em>Consultancy</em></div>
-    <ul class="navlinks">
-      <li><a href="#tax">Taxation</a></li>
-      <li><a href="tools.html">Calculators</a></li>
-      <li><a href="articles/index.html">Guides</a></li>
-      <li><a href="#residency">Residency</a></li>
-      <li><a href="#agent">About Seb</a></li>
-      <li><a href="#explore">Explore</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="navToggle" id="navToggle">☰</button>
+    <div class="nav-right">
+      <ul class="navlinks">
+        <li><a href="#tax">Taxation</a></li>
+        <li><a href="tools.html">Calculators</a></li>
+        <li><a href="articles/index.html">Guides</a></li>
+        <li><a href="#residency">Residency</a></li>
+        <li><a href="#agent">About Seb</a></li>
+        <li><a href="#explore">Explore</a></li>
+      </ul>
+      <div class="geo-inline">
+        <span id="geoMessage" class="geo-inline-text">📍 Detecting…</span>
+        <div class="geo-select-wrap">
+          <!-- Add more <option> entries here as more countries are supported (map the value in REGIONS + TAX_RATES in the script below). -->
+          <select class="geo-select" id="geoSelect">
+            <option value="us">🇺🇸 US</option>
+            <option value="ca">🇨🇦 CA</option>
+            <option value="gb">🇬🇧 UK</option>
+            <option value="default">🌐 Other</option>
+          </select>
+        </div>
+      </div>
+      <a href="#contact" class="nav-cta">Contact</a>
+      <button class="navToggle" id="navToggle">☰</button>
+    </div>
   </nav>
 </header>
 
@@ -715,17 +709,18 @@
   <div class="wrap">
     <div class="section-head reveal" style="margin:0 auto 40px;text-align:center;max-width:680px;">
       <div class="eyebrow-line" style="justify-content:center;"><span>Free Downloads</span></div>
-      <h2>Grab a Guide Before You Go</h2>
-      <p>Four short, practical PDFs — no cost, just your email. Seb will follow up directly once you download one.</p>
+      <h2>Free Guides Worth Grabbing</h2>
+      <p>Four short, practical PDFs Seb put together himself — pick one, tell us where to send it, done.</p>
     </div>
     <div class="lead-magnet-grid reveal-stagger">
       <div class="lm-card reveal">
         <span class="lm-tag">📄 Free Guide</span>
         <h3>5 Ways to Legally Reduce Your Taxes</h3>
         <p>The exact legal levers relocating founders use to keep more of what they earn once they move.</p>
-        <div class="lm-form" id="lmForm-tax">
+        <button type="button" class="lm-cta" id="lmCta-tax" onclick="showLmForm('tax')">Get the Free PDF</button>
+        <div class="lm-form hide" id="lmForm-tax">
           <input type="email" id="lmEmail-tax" placeholder="you@email.com">
-          <button type="button" onclick="unlockGuide('tax')">Get the Free PDF</button>
+          <button type="button" onclick="unlockGuide('tax')">Send It</button>
         </div>
         <div class="lm-success" id="lmSuccess-tax">✅ Check your downloads — Seb will follow up directly too.</div>
       </div>
@@ -733,9 +728,10 @@
         <span class="lm-tag">📄 Free Guide</span>
         <h3>5 Mistakes That Cost Relocators Thousands</h3>
         <p>The avoidable mistakes that turn a smart move into an expensive one.</p>
-        <div class="lm-form" id="lmForm-mistakes">
+        <button type="button" class="lm-cta" id="lmCta-mistakes" onclick="showLmForm('mistakes')">Get the Free PDF</button>
+        <div class="lm-form hide" id="lmForm-mistakes">
           <input type="email" id="lmEmail-mistakes" placeholder="you@email.com">
-          <button type="button" onclick="unlockGuide('mistakes')">Get the Free PDF</button>
+          <button type="button" onclick="unlockGuide('mistakes')">Send It</button>
         </div>
         <div class="lm-success" id="lmSuccess-mistakes">✅ Check your downloads — Seb will follow up directly too.</div>
       </div>
@@ -743,9 +739,10 @@
         <span class="lm-tag">📄 Free Guide</span>
         <h3>The Cayman Insider List</h3>
         <p>The 5 people you need in your corner before you move — Seb can introduce you to them.</p>
-        <div class="lm-form" id="lmForm-insider">
+        <button type="button" class="lm-cta" id="lmCta-insider" onclick="showLmForm('insider')">Get the Free PDF</button>
+        <div class="lm-form hide" id="lmForm-insider">
           <input type="email" id="lmEmail-insider" placeholder="you@email.com">
-          <button type="button" onclick="unlockGuide('insider')">Get the Free PDF</button>
+          <button type="button" onclick="unlockGuide('insider')">Send It</button>
         </div>
         <div class="lm-success" id="lmSuccess-insider">✅ Check your downloads — Seb will follow up directly too.</div>
       </div>
@@ -753,9 +750,10 @@
         <span class="lm-tag">📄 Free Guide</span>
         <h3>The Little-Known Money-Saving Tip</h3>
         <p>One overlooked detail that can save new residents thousands on the move itself.</p>
-        <div class="lm-form" id="lmForm-tip">
+        <button type="button" class="lm-cta" id="lmCta-tip" onclick="showLmForm('tip')">Get the Free PDF</button>
+        <div class="lm-form hide" id="lmForm-tip">
           <input type="email" id="lmEmail-tip" placeholder="you@email.com">
-          <button type="button" onclick="unlockGuide('tip')">Get the Free PDF</button>
+          <button type="button" onclick="unlockGuide('tip')">Send It</button>
         </div>
         <div class="lm-success" id="lmSuccess-tip">✅ Check your downloads — Seb will follow up directly too.</div>
       </div>
@@ -898,39 +896,17 @@
 </section>
 
 <section id="contact">
-  <div class="wrap grid-2 reveal">
-    <div>
-      <div class="eyebrow-line"><span>Let's Talk</span></div>
-      <h2>Book Time With Seb Nehme</h2>
-      <p style="color:#5c6864;margin-top:14px;font-weight:300;font-size:16px;">Tell Seb where you're relocating from and what you're trying to solve — tax, residency, property, or all three. As a Cayman citizen who knows everyone on the island, he'll connect you directly with the right person, no middleman.</p>
+  <div class="wrap reveal" style="text-align:center;max-width:580px;margin:0 auto;">
+    <div class="eyebrow-line" style="justify-content:center;"><span>Let's Talk</span></div>
+    <h2>Got a Question? Just Message Seb.</h2>
+    <p style="color:#5c6864;margin:14px 0 30px;font-weight:300;font-size:16px;">No forms, no waiting on hold. He answers personally — usually within the hour.</p>
+    <div class="whatsapp-pill-wrap">
+      <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%20found%20your%20site%20and%20wanted%20to%20chat%20about%20moving%20to%20Cayman." target="_blank" rel="noopener" class="whatsapp-pill" style="padding:17px 36px;font-size:15.5px;">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.484 1.34 4.997L2 22l5.116-1.334a9.96 9.96 0 0 0 4.888 1.286h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.182-2.928-7.07a9.935 9.935 0 0 0-7.073-2.882zm5.848 15.845a8.302 8.302 0 0 1-11.75.005 8.269 8.269 0 0 1-2.44-5.853c0-4.585 3.732-8.317 8.32-8.317a8.264 8.264 0 0 1 5.856 2.436 8.263 8.263 0 0 1 2.435 5.855 8.302 8.302 0 0 1-2.42 5.874z"/></svg>
+        Message Seb on WhatsApp
+      </a>
     </div>
-    <div class="card contact-card">
-      <p class="quick-contact-label">Fastest way to reach Seb — tap what you're after, WhatsApp opens pre-filled. No form required.</p>
-      <div class="quick-chips">
-        <a class="quick-chip" href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%27d%20like%20to%20talk%20about%20tax%20savings%20and%20moving%20to%20Cayman." target="_blank" rel="noopener">💰 Tax & Savings</a>
-        <a class="quick-chip" href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%27m%20interested%20in%20buying%20property%20in%20Cayman." target="_blank" rel="noopener">🏡 Buying Property</a>
-        <a class="quick-chip" href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%20want%20to%20learn%20about%20setting%20up%20a%20company%20in%20Cayman." target="_blank" rel="noopener">🏢 Corporate Setup</a>
-        <a class="quick-chip" href="https://wa.me/13455550134?text=Hi%20Seb%2C%20just%20exploring%20what%20moving%20to%20Cayman%20would%20look%20like." target="_blank" rel="noopener">👀 Just Exploring</a>
-      </div>
-
-      <div class="whatsapp-pill-wrap">
-        <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%20found%20your%20site%20and%20wanted%20to%20chat%20about%20moving%20to%20Cayman." target="_blank" rel="noopener" class="whatsapp-pill">
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.484 1.34 4.997L2 22l5.116-1.334a9.96 9.96 0 0 0 4.888 1.286h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.182-2.928-7.07a9.935 9.935 0 0 0-7.073-2.882zm5.848 15.845a8.302 8.302 0 0 1-11.75.005 8.269 8.269 0 0 1-2.44-5.853c0-4.585 3.732-8.317 8.32-8.317a8.264 8.264 0 0 1 5.856 2.436 8.263 8.263 0 0 1 2.435 5.855 8.302 8.302 0 0 1-2.42 5.874z"/></svg>
-          Message Seb on WhatsApp
-        </a>
-      </div>
-
-      <div class="or-divider"><span>or</span></div>
-
-      <button type="button" class="email-toggle" onclick="toggleEmailForm()" id="emailToggleBtn">Prefer email? Leave your details →</button>
-      <div class="email-form" id="emailForm" style="display:none;">
-        <div class="field-row">
-          <div><input type="text" placeholder="First name" id="contactName"></div>
-          <div><input type="email" placeholder="you@email.com" id="contactEmail"></div>
-        </div>
-        <button type="button" class="btn btn-dark btn-block" onclick="submitEmailContact()">Send to Seb</button>
-      </div>
-    </div>
+    <a href="mailto:seb@sebnehmeconsultancy.example" style="display:inline-block;margin-top:20px;font-size:13.5px;color:#5c6864;text-decoration:underline;text-underline-offset:3px;">or email seb@sebnehmeconsultancy.example</a>
   </div>
 </section>
 
@@ -1054,10 +1030,10 @@ async function detectGeo(){
     const map = {us:'us', ca:'ca', gb:'gb'};
     const region = map[code] || 'default';
     setRegion(region);
-    msgEl.textContent = `📍 Showing content for ${data.country_name || 'your region'}. Not right? Switch below.`;
+    msgEl.textContent = `📍 ${data.country_name || 'Your region'}`;
   }catch(e){
     setRegion('us');
-    msgEl.textContent = "📍 Personalize by region — select where you're relocating from:";
+    msgEl.textContent = "📍 Choose your region";
   }
 }
 detectGeo();
@@ -1088,25 +1064,6 @@ const io = new IntersectionObserver((entries)=>{
 }, {threshold:0.15});
 document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=> io.observe(el));
 
-function toggleEmailForm(){
-  const form = document.getElementById('emailForm');
-  const btn = document.getElementById('emailToggleBtn');
-  const isOpen = form.style.display === 'block';
-  form.style.display = isOpen ? 'none' : 'block';
-  btn.textContent = isOpen ? 'Prefer email? Leave your details →' : 'Hide email form';
-}
-
-function submitEmailContact(){
-  const name = document.getElementById('contactName').value.trim();
-  const email = document.getElementById('contactEmail').value.trim();
-  if(!email || !email.includes('@')){
-    document.getElementById('contactEmail').style.borderColor = '#e08a7d';
-    return;
-  }
-  // In production this would post to a CRM/email tool.
-  alert("Thanks" + (name ? ", " + name : "") + " — Seb will reach out to " + email + " shortly.");
-}
-
 // ---------- lead magnet (email-gated PDF) unlock ----------
 const LM_GUIDES = {
   tax: {file:'downloads/5-ways-to-legally-reduce-your-taxes-in-cayman.pdf', name:'5-Ways-to-Legally-Reduce-Your-Taxes-Cayman.pdf'},
@@ -1114,6 +1071,18 @@ const LM_GUIDES = {
   insider: {file:'downloads/cayman-insider-list-5-people-you-need-to-know.pdf', name:'Cayman-Insider-List-5-People.pdf'},
   tip: {file:'downloads/little-known-tip-to-save-money-moving-to-cayman.pdf', name:'Little-Known-Cayman-Money-Tip.pdf'}
 };
+
+
+function showLmForm(key){
+  const cta = document.getElementById('lmCta-' + key);
+  const form = document.getElementById('lmForm-' + key);
+  if(cta) cta.classList.add('hide');
+  if(form){
+    form.classList.remove('hide');
+    const inp = document.getElementById('lmEmail-' + key);
+    if(inp) inp.focus();
+  }
+}
 
 function unlockGuide(key){
   const emailInput = document.getElementById('lmEmail-' + key);
