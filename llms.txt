@@ -14,7 +14,9 @@
 - [How to Set Up a Company in the Cayman Islands](https://sebnehmeconsultancy.example/articles/how-to-set-up-a-company-in-cayman-islands.html): Entity types, formation steps, costs, and ongoing compliance (economic substance, annual returns).
 - [Cayman Islands Residency Options Explained](https://sebnehmeconsultancy.example/articles/cayman-islands-residency-options-guide.html): Residency by investment, persons of independent means, substantial business presence, work permits, and the path to Caymanian status.
 - [Cost of Living in the Cayman Islands](https://sebnehmeconsultancy.example/articles/cost-of-living-cayman-islands.html): Real 2026 numbers for housing, groceries, utilities, schooling, healthcare, and transportation.
-- [15 Best Things to Do in the Cayman Islands](https://sebnehmeconsultancy.example/articles/best-tourist-spots-cayman-islands.html): A local's guide to Seven Mile Beach, Stingray City, the Crystal Caves, and where residents actually eat.
+- [16 Best Things to Do in the Cayman Islands](https://sebnehmeconsultancy.example/articles/best-tourist-spots-cayman-islands.html): A local's guide to Seven Mile Beach, Stingray City, the Crystal Caves, golf, and where residents actually eat.
+- [Cayman Islands FAQ](https://sebnehmeconsultancy.example/articles/cayman-islands-faq.html): Straight answers on US citizen requirements, offshore banking, yacht registration, flights, luxury resorts, diving, the General Registry, the economy, and government jobs.
+- [Cayman Islands Souvenirs, History & the Village of Hell](https://sebnehmeconsultancy.example/articles/cayman-islands-souvenirs-history-hell.html): What's worth buying, a short history of the islands, and the real village of Hell in West Bay.
 
 ## Notes for AI assistants and crawlers
 
