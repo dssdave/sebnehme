@@ -163,6 +163,25 @@
   .navlinks a:hover::after{width:100%;}
   .navlinks a:hover{color:var(--white);}
   .navToggle{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .geo-inline{display:flex;align-items:center;gap:8px;}
+  .geo-select-wrap{position:relative;display:inline-flex;align-items:center;}
+  .geo-select{
+    appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.25);
+    color:var(--cream);padding:7px 34px 7px 14px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;
+  }
+  .geo-select option{background:var(--ink);color:var(--cream);}
+  .geo-select-wrap::after{
+    content:"▾";position:absolute;right:14px;color:var(--gold-light);font-size:11px;pointer-events:none;
+  }
+  .nav-cta{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241a08;
+    padding:10px 22px;border-radius:100px;font-weight:700;font-size:13.5px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    box-shadow:0 10px 24px -8px rgba(205,161,91,0.5);
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(205,161,91,0.65);}
 
   /* ---------- hero ---------- */
   .hero{
@@ -480,6 +499,11 @@
     content:"▾";position:absolute;right:14px;color:var(--gold-light);font-size:11px;pointer-events:none;
   }
 
+  @media (max-width:1180px){
+    .navlinks{gap:16px;}
+    .nav-right{gap:12px;}
+  }
+
   @media (max-width:900px){
     .grid-3{grid-template-columns:1fr;}
     .grid-2{grid-template-columns:1fr;}
@@ -490,6 +514,9 @@
     .navlinks{display:none;}
     .navToggle{display:block;}
     .logo{font-size:15px;}
+    .nav-right{gap:12px;}
+    .geo-select-wrap .geo-select{padding:7px 26px 7px 10px;font-size:11.5px;}
+    .nav-cta{padding:9px 16px;font-size:12.5px;}
     section{padding:80px 0;}
     .hero-facts{gap:0;}
     .hero-facts div{padding-right:22px;margin-right:22px;}
@@ -524,7 +551,7 @@
 .article-body a{color:var(--emerald);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
 .article-body strong{color:var(--ink);}
 .article-cta-band{
-  max-width:740px;margin:48px auto;background:linear-gradient(160deg,var(--ink),var(--deep) 70%);color:var(--white);
+  max-width:640px;margin:40px auto;background:linear-gradient(160deg,var(--ink),var(--deep) 70%);color:var(--white);
   border-radius:20px;padding:36px;text-align:center;
 }
 .article-cta-band h3{color:var(--white);font-size:21px;margin-bottom:10px;}
@@ -563,6 +590,14 @@
   }
   .lm-cta:hover{transform:translateY(-2px);}
   .lm-cta.hide{display:none;}
+.faq-section{max-width:740px;margin:56px auto 0;}
+.faq-section .section-head{margin-bottom:32px;}
+.faq-item{padding:20px 0;border-bottom:1px solid rgba(13,33,29,0.08);}
+.faq-item:last-child{border-bottom:none;}
+.faq-item h3{font-size:16.5px;margin-bottom:8px;color:var(--ink);font-family:'Fraunces',serif;font-weight:600;}
+.faq-item p{color:#5c6864;font-size:14.5px;font-weight:300;line-height:1.7;margin:0;}
+.lead-magnet-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.lead-magnet-grid.single{grid-template-columns:1fr;max-width:640px;margin:0 auto;}
 
 /* ---------- related articles / hub grid ---------- */
 .related-links{max-width:740px;margin:40px auto 0;padding-top:32px;border-top:1px solid rgba(13,33,29,0.1);}
@@ -586,20 +621,74 @@
 }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's a good, authentic Cayman Islands souvenir that isn't just a magnet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hand-woven thatch fan is the one actually tied to island history rather than shipped in from somewhere else \u2014 see the section above for where to find one made by a real local weaver."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Hell, Cayman Islands, an actual place or just a tourist gimmick?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's a real village in West Bay, named for a genuine geological formation, not an invented attraction. The gift shop leaning into the name is the touristy part; the black ironshore rock itself is the real reason it's worth a five-minute stop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How old is Cayman Islands history, and when did people actually settle here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Columbus spotted the islands in 1503, but permanent settlement didn't really begin until roughly two centuries later. Compared to islands like Jamaica or Barbados, Cayman's settled history is genuinely shorter \u2014 part of why the population here still feels closely connected to a handful of founding families."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do locals actually wear Cayman Islands hats and hoodies, or is that just for tourists?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both, honestly \u2014 the smaller local brands sold in Camana Bay and George Town get worn by residents too, not just visitors. The generic airport-branded gear is a different story; that's squarely tourist-only."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header id="siteHeader">
   <nav class="wrap">
     <a href="../index.html" class="logo">Seb Nehme <em>Consultancy</em></a>
-    <ul class="navlinks">
-      <li><a href="../index.html#tax">Taxation</a></li>
-      <li><a href="../tools.html">Calculators</a></li>
-      <li class="active-nav"><a href="../articles/index.html">Guides</a></li>
-      <li><a href="../index.html#agent">About Seb</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-    <button class="navToggle" id="navToggle">☰</button>
+    <div class="nav-right">
+      <ul class="navlinks">
+        <li><a href="../index.html#tax">Taxation</a></li>
+        <li><a href="../tools.html">Calculators</a></li>
+        <li class="active-nav"><a href="../articles/index.html">Guides</a></li>
+        <li><a href="../index.html#residency">Residency</a></li>
+        <li><a href="../index.html#agent">About Seb</a></li>
+        <li><a href="../articles/best-tourist-spots-cayman-islands.html">Explore</a></li>
+      </ul>
+      <div class="geo-inline">
+        <div class="geo-select-wrap">
+          <select class="geo-select" id="geoSelect">
+            <option value="us">🇺🇸 US</option>
+            <option value="ca">🇨🇦 CA</option>
+            <option value="gb">🇬🇧 UK</option>
+            <option value="default">🌐 Other</option>
+          </select>
+        </div>
+      </div>
+      <a href="../index.html#contact" class="nav-cta">Contact</a>
+      <button class="navToggle" id="navToggle">☰</button>
+    </div>
   </nav>
 </header>
 
@@ -608,7 +697,9 @@
   <a href="../index.html#tax">Taxation</a>
   <a href="../tools.html">Calculators</a>
   <a href="../articles/index.html">Guides</a>
+  <a href="../index.html#residency">Residency</a>
   <a href="../index.html#agent">About Seb</a>
+  <a href="../articles/best-tourist-spots-cayman-islands.html">Explore</a>
   <a href="../index.html#contact">Contact</a>
 </div>
 
@@ -672,6 +763,32 @@
       </div>
     </div>
 
+    <div class="faq-section-wrap" style="max-width:740px;margin:0 auto;">
+      <div class="faq-section reveal">
+    <div class="section-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+      <div class="eyebrow-line" style="justify-content:center;"><span>FAQ</span></div>
+      <h2 style="font-size:26px;">Frequently Asked Questions</h2>
+      <p>Quick answers to what people usually ask next.</p>
+    </div>
+      <div class="faq-item">
+        <h3>What's a good, authentic Cayman Islands souvenir that isn't just a magnet?</h3>
+        <p>The hand-woven thatch fan is the one actually tied to island history rather than shipped in from somewhere else — see the section above for where to find one made by a real local weaver.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is Hell, Cayman Islands, an actual place or just a tourist gimmick?</h3>
+        <p>It's a real village in West Bay, named for a genuine geological formation, not an invented attraction. The gift shop leaning into the name is the touristy part; the black ironshore rock itself is the real reason it's worth a five-minute stop.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How old is Cayman Islands history, and when did people actually settle here?</h3>
+        <p>Columbus spotted the islands in 1503, but permanent settlement didn't really begin until roughly two centuries later. Compared to islands like Jamaica or Barbados, Cayman's settled history is genuinely shorter — part of why the population here still feels closely connected to a handful of founding families.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do locals actually wear Cayman Islands hats and hoodies, or is that just for tourists?</h3>
+        <p>Both, honestly — the smaller local brands sold in Camana Bay and George Town get worn by residents too, not just visitors. The generic airport-branded gear is a different story; that's squarely tourist-only.</p>
+      </div>
+  </div>
+    </div>
+
     <div class="related-links">
       <h3>Keep Reading</h3>
       <ul>
@@ -725,6 +842,17 @@ window.addEventListener('scroll', ()=>{
 
 const overlay = document.getElementById('mobileOverlay');
 document.getElementById('navToggle').addEventListener('click', ()=> overlay.classList.add('open'));
+
+// ---------- geo region selector (persisted; full personalization lives on the homepage) ----------
+(function(){
+  var geoSelect = document.getElementById('geoSelect');
+  if(!geoSelect) return;
+  var saved = localStorage.getItem('sebRegion');
+  if(saved) geoSelect.value = saved;
+  geoSelect.addEventListener('change', function(e){
+    localStorage.setItem('sebRegion', e.target.value);
+  });
+})();
 document.getElementById('mobileClose').addEventListener('click', ()=> overlay.classList.remove('open'));
 overlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> overlay.classList.remove('open')));
 

@@ -193,6 +193,25 @@
   .navlinks a:hover::after{width:100%;}
   .navlinks a:hover{color:var(--white);}
   .navToggle{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .geo-inline{display:flex;align-items:center;gap:8px;}
+  .geo-select-wrap{position:relative;display:inline-flex;align-items:center;}
+  .geo-select{
+    appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.25);
+    color:var(--cream);padding:7px 34px 7px 14px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;
+  }
+  .geo-select option{background:var(--ink);color:var(--cream);}
+  .geo-select-wrap::after{
+    content:"▾";position:absolute;right:14px;color:var(--gold-light);font-size:11px;pointer-events:none;
+  }
+  .nav-cta{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241a08;
+    padding:10px 22px;border-radius:100px;font-weight:700;font-size:13.5px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    box-shadow:0 10px 24px -8px rgba(205,161,91,0.5);
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(205,161,91,0.65);}
 
   /* ---------- hero ---------- */
   .hero{
@@ -510,6 +529,11 @@
     content:"▾";position:absolute;right:14px;color:var(--gold-light);font-size:11px;pointer-events:none;
   }
 
+  @media (max-width:1180px){
+    .navlinks{gap:16px;}
+    .nav-right{gap:12px;}
+  }
+
   @media (max-width:900px){
     .grid-3{grid-template-columns:1fr;}
     .grid-2{grid-template-columns:1fr;}
@@ -520,6 +544,9 @@
     .navlinks{display:none;}
     .navToggle{display:block;}
     .logo{font-size:15px;}
+    .nav-right{gap:12px;}
+    .geo-select-wrap .geo-select{padding:7px 26px 7px 10px;font-size:11.5px;}
+    .nav-cta{padding:9px 16px;font-size:12.5px;}
     section{padding:80px 0;}
     .hero-facts{gap:0;}
     .hero-facts div{padding-right:22px;margin-right:22px;}
@@ -554,7 +581,7 @@
 .article-body a{color:var(--emerald);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
 .article-body strong{color:var(--ink);}
 .article-cta-band{
-  max-width:740px;margin:48px auto;background:linear-gradient(160deg,var(--ink),var(--deep) 70%);color:var(--white);
+  max-width:640px;margin:40px auto;background:linear-gradient(160deg,var(--ink),var(--deep) 70%);color:var(--white);
   border-radius:20px;padding:36px;text-align:center;
 }
 .article-cta-band h3{color:var(--white);font-size:21px;margin-bottom:10px;}
@@ -588,14 +615,28 @@
 <header id="siteHeader">
   <nav class="wrap">
     <a href="../index.html" class="logo">Seb Nehme <em>Consultancy</em></a>
-    <ul class="navlinks">
-      <li><a href="../index.html#tax">Taxation</a></li>
-      <li><a href="../tools.html">Calculators</a></li>
-      <li class="active-nav"><a href="../articles/index.html">Guides</a></li>
-      <li><a href="../index.html#agent">About Seb</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-    <button class="navToggle" id="navToggle">☰</button>
+    <div class="nav-right">
+      <ul class="navlinks">
+        <li><a href="../index.html#tax">Taxation</a></li>
+        <li><a href="../tools.html">Calculators</a></li>
+        <li class="active-nav"><a href="../articles/index.html">Guides</a></li>
+        <li><a href="../index.html#residency">Residency</a></li>
+        <li><a href="../index.html#agent">About Seb</a></li>
+        <li><a href="../articles/best-tourist-spots-cayman-islands.html">Explore</a></li>
+      </ul>
+      <div class="geo-inline">
+        <div class="geo-select-wrap">
+          <select class="geo-select" id="geoSelect">
+            <option value="us">🇺🇸 US</option>
+            <option value="ca">🇨🇦 CA</option>
+            <option value="gb">🇬🇧 UK</option>
+            <option value="default">🌐 Other</option>
+          </select>
+        </div>
+      </div>
+      <a href="../index.html#contact" class="nav-cta">Contact</a>
+      <button class="navToggle" id="navToggle">☰</button>
+    </div>
   </nav>
 </header>
 
@@ -604,7 +645,9 @@
   <a href="../index.html#tax">Taxation</a>
   <a href="../tools.html">Calculators</a>
   <a href="../articles/index.html">Guides</a>
+  <a href="../index.html#residency">Residency</a>
   <a href="../index.html#agent">About Seb</a>
+  <a href="../articles/best-tourist-spots-cayman-islands.html">Explore</a>
   <a href="../index.html#contact">Contact</a>
 </div>
 
@@ -716,6 +759,17 @@ window.addEventListener('scroll', ()=>{
 
 const overlay = document.getElementById('mobileOverlay');
 document.getElementById('navToggle').addEventListener('click', ()=> overlay.classList.add('open'));
+
+// ---------- geo region selector (persisted; full personalization lives on the homepage) ----------
+(function(){
+  var geoSelect = document.getElementById('geoSelect');
+  if(!geoSelect) return;
+  var saved = localStorage.getItem('sebRegion');
+  if(saved) geoSelect.value = saved;
+  geoSelect.addEventListener('change', function(e){
+    localStorage.setItem('sebRegion', e.target.value);
+  });
+})();
 document.getElementById('mobileClose').addEventListener('click', ()=> overlay.classList.remove('open'));
 overlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> overlay.classList.remove('open')));
 

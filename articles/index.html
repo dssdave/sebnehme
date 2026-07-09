@@ -159,6 +159,25 @@
   .navlinks a:hover::after{width:100%;}
   .navlinks a:hover{color:var(--white);}
   .navToggle{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .geo-inline{display:flex;align-items:center;gap:8px;}
+  .geo-select-wrap{position:relative;display:inline-flex;align-items:center;}
+  .geo-select{
+    appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.25);
+    color:var(--cream);padding:7px 34px 7px 14px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;
+  }
+  .geo-select option{background:var(--ink);color:var(--cream);}
+  .geo-select-wrap::after{
+    content:"▾";position:absolute;right:14px;color:var(--gold-light);font-size:11px;pointer-events:none;
+  }
+  .nav-cta{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241a08;
+    padding:10px 22px;border-radius:100px;font-weight:700;font-size:13.5px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    box-shadow:0 10px 24px -8px rgba(205,161,91,0.5);
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(205,161,91,0.65);}
 
   /* ---------- hero ---------- */
   .hero{
@@ -480,7 +499,7 @@
 
   /* ---------- lead magnet (email-gated PDF) cards ---------- */
   .lead-magnet-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-  .lead-magnet-grid.single{grid-template-columns:1fr;max-width:560px;margin:0 auto;}
+  .lead-magnet-grid.single{grid-template-columns:1fr;max-width:640px;margin:0 auto;}
   .lm-card{
     background:var(--white);border:1px solid rgba(13,33,29,0.08);border-radius:20px;padding:30px;
     box-shadow:0 2px 8px rgba(13,33,29,0.04);transition:transform .4s var(--ease), box-shadow .4s var(--ease);
@@ -514,7 +533,18 @@
   }
   .lm-cta:hover{transform:translateY(-2px);}
   .lm-cta.hide{display:none;}
+.faq-section{max-width:740px;margin:56px auto 0;}
+.faq-section .section-head{margin-bottom:32px;}
+.faq-item{padding:20px 0;border-bottom:1px solid rgba(13,33,29,0.08);}
+.faq-item:last-child{border-bottom:none;}
+.faq-item h3{font-size:16.5px;margin-bottom:8px;color:var(--ink);font-family:'Fraunces',serif;font-weight:600;}
+.faq-item p{color:#5c6864;font-size:14.5px;font-weight:300;line-height:1.7;margin:0;}
 
+
+  @media (max-width:1180px){
+    .navlinks{gap:16px;}
+    .nav-right{gap:12px;}
+  }
 
   @media (max-width:900px){
     .grid-3{grid-template-columns:1fr;}
@@ -526,6 +556,9 @@
     .navlinks{display:none;}
     .navToggle{display:block;}
     .logo{font-size:15px;}
+    .nav-right{gap:12px;}
+    .geo-select-wrap .geo-select{padding:7px 26px 7px 10px;font-size:11.5px;}
+    .nav-cta{padding:9px 16px;font-size:12.5px;}
     section{padding:80px 0;}
     .hero-facts{gap:0;}
     .hero-facts div{padding-right:22px;margin-right:22px;}
@@ -560,7 +593,7 @@
 .article-body a{color:var(--emerald);text-decoration:underline;text-underline-offset:3px;font-weight:600;}
 .article-body strong{color:var(--ink);}
 .article-cta-band{
-  max-width:740px;margin:48px auto;background:linear-gradient(160deg,var(--ink),var(--deep) 70%);color:var(--white);
+  max-width:640px;margin:40px auto;background:linear-gradient(160deg,var(--ink),var(--deep) 70%);color:var(--white);
   border-radius:20px;padding:36px;text-align:center;
 }
 .article-cta-band h3{color:var(--white);font-size:21px;margin-bottom:10px;}
@@ -588,20 +621,74 @@
 }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are these Cayman Islands relocation guides free to read?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely \u2014 no login, no paywall, no email required just to read. A few guides also offer an optional free PDF download if you want something to keep, but that's separate from the articles themselves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which guide should I read first if I'm just starting to consider Cayman?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with the tax guide if the financial case is your main question, or the tourist spots guide if you're still deciding whether you even like the island. Most people end up reading three or four of these before they're ready to talk specifics with Seb."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this legal or tax advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 everything here is general, illustrative information meant to help you ask better questions, not a substitute for a licensed advisor. Figures and thresholds change, and your specific situation always needs individual confirmation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often are these guides updated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They get revisited as rules, costs, or thresholds change materially \u2014 not on a fixed schedule, but this isn't a set of pages written once and forgotten either."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header id="siteHeader">
   <nav class="wrap">
     <a href="../index.html" class="logo">Seb Nehme <em>Consultancy</em></a>
-    <ul class="navlinks">
-      <li><a href="../index.html#tax">Taxation</a></li>
-      <li><a href="../tools.html">Calculators</a></li>
-      <li class="active-nav"><a href="../articles/index.html">Guides</a></li>
-      <li><a href="../index.html#agent">About Seb</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-    <button class="navToggle" id="navToggle">☰</button>
+    <div class="nav-right">
+      <ul class="navlinks">
+        <li><a href="../index.html#tax">Taxation</a></li>
+        <li><a href="../tools.html">Calculators</a></li>
+        <li class="active-nav"><a href="../articles/index.html">Guides</a></li>
+        <li><a href="../index.html#residency">Residency</a></li>
+        <li><a href="../index.html#agent">About Seb</a></li>
+        <li><a href="../articles/best-tourist-spots-cayman-islands.html">Explore</a></li>
+      </ul>
+      <div class="geo-inline">
+        <div class="geo-select-wrap">
+          <select class="geo-select" id="geoSelect">
+            <option value="us">🇺🇸 US</option>
+            <option value="ca">🇨🇦 CA</option>
+            <option value="gb">🇬🇧 UK</option>
+            <option value="default">🌐 Other</option>
+          </select>
+        </div>
+      </div>
+      <a href="../index.html#contact" class="nav-cta">Contact</a>
+      <button class="navToggle" id="navToggle">☰</button>
+    </div>
   </nav>
 </header>
 
@@ -610,7 +697,9 @@
   <a href="../index.html#tax">Taxation</a>
   <a href="../tools.html">Calculators</a>
   <a href="../articles/index.html">Guides</a>
+  <a href="../index.html#residency">Residency</a>
   <a href="../index.html#agent">About Seb</a>
+  <a href="../articles/best-tourist-spots-cayman-islands.html">Explore</a>
   <a href="../index.html#contact">Contact</a>
 </div>
 
@@ -626,7 +715,7 @@
   <div class="wrap">
     <div class="hub-grid reveal-stagger">
       <a href="cayman-islands-tax-savings-guide.html" class="hub-card reveal" style="text-decoration:none;">
-        <div class="hub-card-img"></div>
+        <div class="hub-card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=700&q=70');background-size:cover;background-position:center;"></div>
         <div class="body">
           <span class="tag">Taxation</span>
           <h3>Cayman Islands Tax Guide 2026</h3>
@@ -635,7 +724,7 @@
         </div>
       </a>
       <a href="best-tourist-spots-cayman-islands.html" class="hub-card reveal" style="text-decoration:none;">
-        <div class="hub-card-img"></div>
+        <div class="hub-card-img" style="background-image:url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=700&q=70');background-size:cover;background-position:center;"></div>
         <div class="body">
           <span class="tag">Tourism</span>
           <h3>16 Best Things to Do in the Cayman Islands</h3>
@@ -644,7 +733,7 @@
         </div>
       </a>
       <a href="how-to-set-up-a-company-in-cayman-islands.html" class="hub-card reveal" style="text-decoration:none;">
-        <div class="hub-card-img"></div>
+        <div class="hub-card-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=70');background-size:cover;background-position:center;"></div>
         <div class="body">
           <span class="tag">Corporate</span>
           <h3>How to Set Up a Company in the Cayman Islands</h3>
@@ -653,7 +742,7 @@
         </div>
       </a>
       <a href="cayman-islands-residency-options-guide.html" class="hub-card reveal" style="text-decoration:none;">
-        <div class="hub-card-img"></div>
+        <div class="hub-card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=70');background-size:cover;background-position:center;"></div>
         <div class="body">
           <span class="tag">Residency</span>
           <h3>Cayman Islands Residency Options Explained</h3>
@@ -662,7 +751,7 @@
         </div>
       </a>
       <a href="cost-of-living-cayman-islands.html" class="hub-card reveal" style="text-decoration:none;">
-        <div class="hub-card-img"></div>
+        <div class="hub-card-img" style="background-image:url('https://images.unsplash.com/photo-1506617420156-8e4536971650?auto=format&fit=crop&w=700&q=70');background-size:cover;background-position:center;"></div>
         <div class="body">
           <span class="tag">Cost of Living</span>
           <h3>Cost of Living in the Cayman Islands: Real Numbers</h3>
@@ -671,7 +760,7 @@
         </div>
       </a>
       <a href="cayman-islands-faq.html" class="hub-card reveal" style="text-decoration:none;">
-        <div class="hub-card-img"></div>
+        <div class="hub-card-img" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=700&q=70');background-size:cover;background-position:center;"></div>
         <div class="body">
           <span class="tag">FAQ</span>
           <h3>Cayman Islands FAQ</h3>
@@ -680,7 +769,7 @@
         </div>
       </a>
       <a href="cayman-islands-souvenirs-history-hell.html" class="hub-card reveal" style="text-decoration:none;">
-        <div class="hub-card-img"></div>
+        <div class="hub-card-img" style="background-image:url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=700&q=70');background-size:cover;background-position:center;"></div>
         <div class="body">
           <span class="tag">Culture</span>
           <h3>Souvenirs, History & the Village of Hell</h3>
@@ -748,6 +837,34 @@
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="faq-section reveal">
+    <div class="section-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+      <div class="eyebrow-line" style="justify-content:center;"><span>FAQ</span></div>
+      <h2 style="font-size:26px;">Questions About These Guides</h2>
+      <p>The practical stuff people ask before they start reading.</p>
+    </div>
+      <div class="faq-item">
+        <h3>Are these Cayman Islands relocation guides free to read?</h3>
+        <p>Yes, completely — no login, no paywall, no email required just to read. A few guides also offer an optional free PDF download if you want something to keep, but that's separate from the articles themselves.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which guide should I read first if I'm just starting to consider Cayman?</h3>
+        <p>Start with the tax guide if the financial case is your main question, or the tourist spots guide if you're still deciding whether you even like the island. Most people end up reading three or four of these before they're ready to talk specifics with Seb.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this legal or tax advice?</h3>
+        <p>No — everything here is general, illustrative information meant to help you ask better questions, not a substitute for a licensed advisor. Figures and thresholds change, and your specific situation always needs individual confirmation.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How often are these guides updated?</h3>
+        <p>They get revisited as rules, costs, or thresholds change materially — not on a fixed schedule, but this isn't a set of pages written once and forgotten either.</p>
+      </div>
+  </div>
+  </div>
+</section>
+
 <section class="alt-bg">
   <div class="wrap" style="text-align:center;">
     <div class="tools-cta-card reveal" style="background:var(--white);">
@@ -805,6 +922,17 @@ window.addEventListener('scroll', ()=>{
 
 const overlay = document.getElementById('mobileOverlay');
 document.getElementById('navToggle').addEventListener('click', ()=> overlay.classList.add('open'));
+
+// ---------- geo region selector (persisted; full personalization lives on the homepage) ----------
+(function(){
+  var geoSelect = document.getElementById('geoSelect');
+  if(!geoSelect) return;
+  var saved = localStorage.getItem('sebRegion');
+  if(saved) geoSelect.value = saved;
+  geoSelect.addEventListener('change', function(e){
+    localStorage.setItem('sebRegion', e.target.value);
+  });
+})();
 document.getElementById('mobileClose').addEventListener('click', ()=> overlay.classList.remove('open'));
 overlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> overlay.classList.remove('open')));
 

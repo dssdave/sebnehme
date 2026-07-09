@@ -138,6 +138,25 @@
   .navlinks a:hover::after{width:100%;}
   .navlinks a:hover{color:var(--white);}
   .navToggle{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .geo-inline{display:flex;align-items:center;gap:8px;}
+  .geo-select-wrap{position:relative;display:inline-flex;align-items:center;}
+  .geo-select{
+    appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.25);
+    color:var(--cream);padding:7px 34px 7px 14px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;
+  }
+  .geo-select option{background:var(--ink);color:var(--cream);}
+  .geo-select-wrap::after{
+    content:"▾";position:absolute;right:14px;color:var(--gold-light);font-size:11px;pointer-events:none;
+  }
+  .nav-cta{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241a08;
+    padding:10px 22px;border-radius:100px;font-weight:700;font-size:13.5px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    box-shadow:0 10px 24px -8px rgba(205,161,91,0.5);
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(205,161,91,0.65);}
 
   /* ---------- hero ---------- */
   .hero{
@@ -459,7 +478,7 @@
 
   /* ---------- lead magnet (email-gated PDF) cards ---------- */
   .lead-magnet-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-  .lead-magnet-grid.single{grid-template-columns:1fr;max-width:560px;margin:0 auto;}
+  .lead-magnet-grid.single{grid-template-columns:1fr;max-width:640px;margin:0 auto;}
   .lm-card{
     background:var(--white);border:1px solid rgba(13,33,29,0.08);border-radius:20px;padding:30px;
     box-shadow:0 2px 8px rgba(13,33,29,0.04);transition:transform .4s var(--ease), box-shadow .4s var(--ease);
@@ -493,7 +512,18 @@
   }
   .lm-cta:hover{transform:translateY(-2px);}
   .lm-cta.hide{display:none;}
+.faq-section{max-width:740px;margin:56px auto 0;}
+.faq-section .section-head{margin-bottom:32px;}
+.faq-item{padding:20px 0;border-bottom:1px solid rgba(13,33,29,0.08);}
+.faq-item:last-child{border-bottom:none;}
+.faq-item h3{font-size:16.5px;margin-bottom:8px;color:var(--ink);font-family:'Fraunces',serif;font-weight:600;}
+.faq-item p{color:#5c6864;font-size:14.5px;font-weight:300;line-height:1.7;margin:0;}
 
+
+  @media (max-width:1180px){
+    .navlinks{gap:16px;}
+    .nav-right{gap:12px;}
+  }
 
   @media (max-width:900px){
     .grid-3{grid-template-columns:1fr;}
@@ -505,6 +535,9 @@
     .navlinks{display:none;}
     .navToggle{display:block;}
     .logo{font-size:15px;}
+    .nav-right{gap:12px;}
+    .geo-select-wrap .geo-select{padding:7px 26px 7px 10px;font-size:11.5px;}
+    .nav-cta{padding:9px 16px;font-size:12.5px;}
     section{padding:80px 0;}
     .hero-facts{gap:0;}
     .hero-facts div{padding-right:22px;margin-right:22px;}
@@ -529,20 +562,74 @@
 .tools-cta-card p{color:#5c6864;font-size:15px;margin-bottom:20px;}
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate are these Cayman Islands tax and cost calculators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They're built on approximate top marginal rates and general 2025\u20132026 market data \u2014 useful for a fast gut-check, not a filing. Your actual numbers depend on deductions, treaties, structure, and your specific situation. Think of the calculators as a starting point for a conversation with Seb, not a substitute for one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the Cayman Islands GDP, and does it affect how stable a move here is?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cayman's economy runs almost entirely on financial services and tourism, and it's one of the higher GDP-per-capita economies in the Caribbean as a result. For current figures, the Economics and Statistics Office publishes official data. Practically, that concentration means Cayman's stability tracks global financial markets and travel demand, not a diversified local industry base."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the residency day tracker match the actual rules for my visa category?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It uses 90 days as a commonly cited reference point, but real thresholds vary by residency category and by your home country's own day-count or statutory residence test. Treat the tracker as a rough planning tool and confirm your specific number with whoever's handling your immigration application."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I run these calculators before or after picking a residency route?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Before, ideally. Most people run the tax and cost numbers first, see whether the math works for their situation, and only then dig into which residency option fits. Picking a visa category before checking the numbers is how people end up disappointed."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header id="siteHeader">
   <nav class="wrap">
     <a href="index.html" class="logo">Seb Nehme <em>Consultancy</em></a>
-    <ul class="navlinks">
-      <li><a href="index.html#tax">Taxation</a></li>
-      <li><a href="tools.html">Calculators</a></li>
-      <li><a href="articles/index.html">Guides</a></li>
-      <li><a href="index.html#agent">About Seb</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-    <button class="navToggle" id="navToggle">☰</button>
+    <div class="nav-right">
+      <ul class="navlinks">
+        <li><a href="index.html#tax">Taxation</a></li>
+        <li><a href="tools.html">Calculators</a></li>
+        <li><a href="articles/index.html">Guides</a></li>
+        <li><a href="index.html#residency">Residency</a></li>
+        <li><a href="index.html#agent">About Seb</a></li>
+        <li><a href="articles/best-tourist-spots-cayman-islands.html">Explore</a></li>
+      </ul>
+      <div class="geo-inline">
+        <div class="geo-select-wrap">
+          <select class="geo-select" id="geoSelect">
+            <option value="us">🇺🇸 US</option>
+            <option value="ca">🇨🇦 CA</option>
+            <option value="gb">🇬🇧 UK</option>
+            <option value="default">🌐 Other</option>
+          </select>
+        </div>
+      </div>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+      <button class="navToggle" id="navToggle">☰</button>
+    </div>
   </nav>
 </header>
 
@@ -551,7 +638,9 @@
   <a href="index.html#tax">Taxation</a>
   <a href="tools.html">Calculators</a>
   <a href="articles/index.html">Guides</a>
+  <a href="index.html#residency">Residency</a>
   <a href="index.html#agent">About Seb</a>
+  <a href="articles/best-tourist-spots-cayman-islands.html">Explore</a>
   <a href="index.html#contact">Contact</a>
 </div>
 
@@ -600,7 +689,7 @@
 
         <div class="unlocked-cta" id="unlockedCta" style="display:none;">
           <p class="unlocked-headline">That's real money, every single year.</p>
-          <p class="unlocked-sub">"I've helped 86+ people make this exact move — I know the numbers, the paperwork, and everyone you'll need to talk to. Let's get on a call and I'll tell you exactly how to make it happen." — Seb</p>
+          <p class="unlocked-sub">"I've helped 100+ people make this exact move — I know the numbers, the paperwork, and everyone you'll need to talk to. Let's get on a call and I'll tell you exactly how to make it happen." — Seb</p>
           <a href="#contact" class="btn btn-dark btn-block">Book a Free 15-Min Call With Seb</a>
         </div>
 
@@ -703,7 +792,7 @@
   <div class="wrap">
     <div class="tools-cta-card reveal">
       <h2 style="font-size:22px;margin-bottom:12px;">Got your numbers? Let's talk them through.</h2>
-      <p>Seb has personally guided 86+ people through this exact move. Message him directly — no form required.</p>
+      <p>Seb has personally guided 100+ people through this exact move. Message him directly — no form required.</p>
       <div style="display:flex;justify-content:center;">
         <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%20just%20used%20your%20calculators%20and%20want%20to%20talk%20through%20my%20numbers." target="_blank" rel="noopener" class="whatsapp-pill">
           <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.484 1.34 4.997L2 22l5.116-1.334a9.96 9.96 0 0 0 4.888 1.286h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.182-2.928-7.07a9.935 9.935 0 0 0-7.073-2.882zm5.848 15.845a8.302 8.302 0 0 1-11.75.005 8.269 8.269 0 0 1-2.44-5.853c0-4.585 3.732-8.317 8.32-8.317a8.264 8.264 0 0 1 5.856 2.436 8.263 8.263 0 0 1 2.435 5.855 8.302 8.302 0 0 1-2.42 5.874z"/></svg>
@@ -711,6 +800,48 @@
         </a>
       </div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="related-links" style="max-width:740px;margin:0 auto;padding-top:0;border-top:none;">
+      <h3>Related Guides</h3>
+      <ul style="list-style:none;display:grid;gap:10px;">
+        <li><a href="articles/cayman-islands-tax-savings-guide.html" style="font-size:15px;font-weight:600;color:var(--ink);">Cayman Islands Tax Guide 2026</a></li>
+        <li><a href="articles/cost-of-living-cayman-islands.html" style="font-size:15px;font-weight:600;color:var(--ink);">Cost of Living in the Cayman Islands</a></li>
+        <li><a href="articles/cayman-islands-residency-options-guide.html" style="font-size:15px;font-weight:600;color:var(--ink);">Cayman Islands Residency Options Explained</a></li>
+        <li><a href="articles/index.html" style="font-size:15px;font-weight:600;color:var(--ink);">See All Guides →</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="faq-section reveal">
+    <div class="section-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+      <div class="eyebrow-line" style="justify-content:center;"><span>Calculator FAQ</span></div>
+      <h2 style="font-size:26px;">Questions About These Tools</h2>
+      <p>What these numbers can and can't tell you.</p>
+    </div>
+      <div class="faq-item">
+        <h3>How accurate are these Cayman Islands tax and cost calculators?</h3>
+        <p>They're built on approximate top marginal rates and general 2025–2026 market data — useful for a fast gut-check, not a filing. Your actual numbers depend on deductions, treaties, structure, and your specific situation. Think of the calculators as a starting point for a conversation with Seb, not a substitute for one.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the Cayman Islands GDP, and does it affect how stable a move here is?</h3>
+        <p>Cayman's economy runs almost entirely on financial services and tourism, and it's one of the higher GDP-per-capita economies in the Caribbean as a result. For current figures, the Economics and Statistics Office publishes official data. Practically, that concentration means Cayman's stability tracks global financial markets and travel demand, not a diversified local industry base.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does the residency day tracker match the actual rules for my visa category?</h3>
+        <p>It uses 90 days as a commonly cited reference point, but real thresholds vary by residency category and by your home country's own day-count or statutory residence test. Treat the tracker as a rough planning tool and confirm your specific number with whoever's handling your immigration application.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Should I run these calculators before or after picking a residency route?</h3>
+        <p>Before, ideally. Most people run the tax and cost numbers first, see whether the math works for their situation, and only then dig into which <a href="articles/cayman-islands-residency-options-guide.html">residency option</a> fits. Picking a visa category before checking the numbers is how people end up disappointed.</p>
+      </div>
+  </div>
   </div>
 </section>
 
@@ -755,6 +886,17 @@ window.addEventListener('scroll', ()=>{
 
 const overlay = document.getElementById('mobileOverlay');
 document.getElementById('navToggle').addEventListener('click', ()=> overlay.classList.add('open'));
+
+// ---------- geo region selector (persisted; full personalization lives on the homepage) ----------
+(function(){
+  var geoSelect = document.getElementById('geoSelect');
+  if(!geoSelect) return;
+  var saved = localStorage.getItem('sebRegion');
+  if(saved) geoSelect.value = saved;
+  geoSelect.addEventListener('change', function(e){
+    localStorage.setItem('sebRegion', e.target.value);
+  });
+})();
 document.getElementById('mobileClose').addEventListener('click', ()=> overlay.classList.remove('open'));
 overlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> overlay.classList.remove('open')));
 
