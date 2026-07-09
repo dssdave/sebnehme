@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers explicitly welcomed — this is a public marketing site, no gated content.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://sebnehmeconsultancy.example/sitemap.xml
