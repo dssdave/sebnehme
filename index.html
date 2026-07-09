@@ -174,7 +174,6 @@
   .navToggle{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;}
   .nav-right{display:flex;align-items:center;gap:18px;}
   .geo-inline{display:flex;align-items:center;gap:8px;}
-  .geo-inline-text{font-size:12px;color:rgba(255,255,255,0.6);white-space:nowrap;font-weight:400;}
   .nav-cta{
     display:inline-flex;align-items:center;justify-content:center;
     background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241a08;
@@ -315,16 +314,6 @@
   .day-entry{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.05);padding:14px 18px;border-radius:12px;margin-bottom:8px;font-size:14px;border:1px solid rgba(255,255,255,0.1);}
   .day-entry button{background:none;border:none;color:#e08a7d;font-weight:700;cursor:pointer;font-size:15px;}
 
-  /* explore */
-  .explore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-  .explore-card{border-radius:22px;overflow:hidden;position:relative;height:380px;box-shadow:0 20px 50px -20px rgba(0,0,0,0.5);}
-  .explore-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s var(--ease);}
-  .explore-card:hover .explore-img{transform:scale(1.08);}
-  .explore-card .overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,12,0.92) 100%);}
-  .explore-card .body{position:absolute;left:0;right:0;bottom:0;padding:28px;color:var(--white);}
-  .explore-card h3{color:var(--white);font-size:20px;margin-bottom:8px;}
-  .explore-card p{font-size:13.5px;color:rgba(255,255,255,0.75);font-weight:300;}
-
   /* footer */
   footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:70px 0 32px;}
   .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:48px;}
@@ -451,6 +440,12 @@
   .whatsapp-pill svg{color:#1f8a4c;flex-shrink:0;}
 
   .contact-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:30px;}
+  .quick-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:22px;}
+  .quick-chip{
+    background:rgba(47,143,125,0.07);border:1px solid rgba(47,143,125,0.2);color:var(--emerald);
+    padding:10px 18px;border-radius:100px;font-size:13.5px;font-weight:600;transition:all .3s var(--ease);
+  }
+  .quick-chip:hover{background:rgba(205,161,91,0.12);border-color:var(--gold);color:var(--ink);transform:translateY(-2px);}
   .contact-btn{
     display:inline-flex;align-items:center;gap:9px;background:var(--white);
     border:1px solid rgba(13,33,29,0.1);color:var(--ink);padding:13px 24px;border-radius:100px;
@@ -544,19 +539,15 @@
   .lm-cta.hide{display:none;}
 
 
-  .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start;}
-  @media (max-width:900px){.ig-grid{grid-template-columns:1fr;}}
 
   @media (max-width:1180px){
     .navlinks{gap:16px;}
     .nav-right{gap:12px;}
-    .geo-inline-text{display:none;}
   }
 
   @media (max-width:900px){
     .grid-3{grid-template-columns:1fr;}
     .grid-2{grid-template-columns:1fr;}
-    .explore-grid{grid-template-columns:1fr;}
     .testimonial-grid{grid-template-columns:1fr;}
     .field-row{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -564,7 +555,6 @@
     .navToggle{display:block;}
     .logo{font-size:15px;}
     .nav-right{gap:12px;}
-    .geo-inline-text{display:none;}
     .geo-select-wrap .geo-select{padding:7px 26px 7px 10px;font-size:11.5px;}
     .nav-cta{padding:9px 16px;font-size:12.5px;}
     section{padding:80px 0;}
@@ -590,10 +580,9 @@
         <li><a href="articles/index.html">Guides</a></li>
         <li><a href="#residency">Residency</a></li>
         <li><a href="#agent">About Seb</a></li>
-        <li><a href="#explore">Explore</a></li>
+        <li><a href="articles/best-tourist-spots-cayman-islands.html">Explore</a></li>
       </ul>
       <div class="geo-inline">
-        <span id="geoMessage" class="geo-inline-text">📍 Detecting…</span>
         <div class="geo-select-wrap">
           <!-- Add more <option> entries here as more countries are supported (map the value in REGIONS + TAX_RATES in the script below). -->
           <select class="geo-select" id="geoSelect">
@@ -617,7 +606,7 @@
   <a href="articles/index.html">Guides</a>
   <a href="#residency">Residency</a>
   <a href="#agent">About Seb</a>
-  <a href="#explore">Explore</a>
+  <a href="articles/best-tourist-spots-cayman-islands.html">Explore</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -807,7 +796,7 @@
       <div class="agent-badge">Cayman Citizen · Founder, Seb Nehme Consultancy</div>
     </div>
     <div>
-      <div class="eyebrow-line"><span>Meet Your Agent</span></div>
+      <div class="eyebrow-line"><span>Meet Your Consultant</span></div>
       <h2>Sebastien Nehme</h2>
       <p class="agent-title">Cayman Citizen &nbsp;·&nbsp; Relocation Consultant &nbsp;·&nbsp; Nature Photographer</p>
       <p class="agent-bio">Speaking five languages and holding three passports, Seb is best described as a citizen of the world. Growing up in the Czech Republic and Lebanon, he immigrated to Canada, escaping civil war as a teenager — proof that difficult moves lead to beautiful places. In 2010, Seb relocated again, trading snowy Canada for the sun in Cayman. Simply put, there's no move Seb can't handle, including his latest into real estate.</p>
@@ -889,38 +878,20 @@
   </div>
 </section>
 
-<section class="alt-bg" id="explore">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow-line"><span>While You're Here</span></div>
-      <h2>Explore Cayman</h2>
-      <p>Scouting a move often starts as a trip. Here's what to see and how to get around.</p>
-    </div>
-    <div class="explore-grid reveal-stagger">
-      <div class="explore-card">
-        <div class="explore-img" style="background-image:url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80');"></div>
-        <div class="overlay"></div>
-        <div class="body"><h3>Seven Mile Beach</h3><p>The island's flagship stretch of white sand — resorts, sunset bars, and the calmest Caribbean water you'll find.</p></div>
-      </div>
-      <div class="explore-card">
-        <div class="explore-img" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80');"></div>
-        <div class="overlay"></div>
-        <div class="body"><h3>Stingray City</h3><p>Wade with wild southern stingrays in waist-deep water — a signature Cayman day trip.</p></div>
-      </div>
-      <div class="explore-card">
-        <div class="explore-img" style="background-image:url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=900&q=80');"></div>
-        <div class="overlay"></div>
-        <div class="body"><h3>Rental Cars & Getting Around</h3><p>Driving is on the left; a temporary local permit (via your rental company) is required alongside your home license.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="contact">
   <div class="wrap reveal" style="text-align:center;max-width:560px;margin:0 auto;">
     <div class="eyebrow-line" style="justify-content:center;"><span>Let's Talk</span></div>
     <h2>Got a Question? Get in Touch.</h2>
     <p style="color:#5c6864;margin:14px 0 30px;font-weight:300;font-size:16px;">However's easiest for you — Seb answers personally, usually within the hour.</p>
+
+    <div class="quick-chips">
+      <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%27m%20considering%20buying%20property%20in%20Cayman%20%E2%80%94%20can%20we%20talk%3F" target="_blank" rel="noopener" class="quick-chip">🏠 Buying a Property</a>
+      <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%20have%20a%20question%20about%20taxes%20and%20moving%20to%20Cayman." target="_blank" rel="noopener" class="quick-chip">💰 Tax Questions</a>
+      <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%20want%20to%20understand%20my%20residency%20options%20in%20Cayman." target="_blank" rel="noopener" class="quick-chip">🛂 Residency Help</a>
+      <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20can%20we%20book%20a%20quick%20call%20to%20talk%20through%20my%20move%20to%20Cayman%3F" target="_blank" rel="noopener" class="quick-chip">📅 Book a Call</a>
+    </div>
+
+    <div class="contact-divider"><span>or reach Seb directly</span></div>
 
     <div class="contact-methods">
       <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%20found%20your%20site%20and%20wanted%20to%20chat%20about%20moving%20to%20Cayman." target="_blank" rel="noopener" class="contact-btn">
@@ -949,34 +920,6 @@
   </div>
 </section>
 
-<section style="padding:70px 0;">
-  <div class="wrap">
-    <div class="section-head reveal" style="margin:0 auto 36px;text-align:center;max-width:600px;">
-      <div class="eyebrow-line" style="justify-content:center;"><span>On Instagram</span></div>
-      <h2 style="font-size:24px;">Island Life, From Seb's Camera</h2>
-      <p style="font-size:15px;">Seb posts regularly from around Grand Cayman — properties, the water, and everyday island life.</p>
-    </div>
-
-    <div class="ig-grid reveal-stagger">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sebnehmerealestate/p/DZc1nsUlsH1/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 2px 8px rgba(13,33,29,0.08); margin:0; max-width:100%; min-width:270px; padding:0; width:100%;">
-        <a href="https://www.instagram.com/sebnehmerealestate/p/DZc1nsUlsH1/" target="_blank" rel="noopener"></a>
-      </blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sebnehmerealestate/p/DZabE-Lx4n8/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 2px 8px rgba(13,33,29,0.08); margin:0; max-width:100%; min-width:270px; padding:0; width:100%;">
-        <a href="https://www.instagram.com/sebnehmerealestate/p/DZabE-Lx4n8/" target="_blank" rel="noopener"></a>
-      </blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sebnehmerealestate/p/DZVk_Lzj_75/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 2px 8px rgba(13,33,29,0.08); margin:0; max-width:100%; min-width:270px; padding:0; width:100%;">
-        <a href="https://www.instagram.com/sebnehmerealestate/p/DZVk_Lzj_75/" target="_blank" rel="noopener"></a>
-      </blockquote>
-    </div>
-
-    <div style="display:flex;justify-content:center;margin-top:30px;">
-      <a href="https://www.instagram.com/sebnehmerealestate/" target="_blank" rel="noopener" class="btn btn-dark">📷 Follow @sebnehmerealestate</a>
-    </div>
-  </div>
-</section>
-
-<script async src="//www.instagram.com/embed.js"></script>
-
 <footer>
   <div class="wrap">
     <div class="footer-grid">
@@ -986,7 +929,7 @@
       </div>
       <div><h4>Site</h4><ul><li><a href="#tax">Taxation</a></li><li><a href="tools.html">Calculators</a></li><li><a href="#residency">Residency</a></li></ul></div>
       <div><h4>Guides</h4><ul><li><a href="articles/index.html">All Guides</a></li></ul></div>
-      <div><h4>Explore</h4><ul><li><a href="#explore">Things To Do</a></li><li><a href="#explore">Rental Cars</a></li></ul></div>
+      <div><h4>Explore</h4><ul><li><a href="articles/best-tourist-spots-cayman-islands.html">Things To Do</a></li><li><a href="articles/best-tourist-spots-cayman-islands.html">Rental Cars</a></li></ul></div>
       <div><h4>Contact</h4><ul><li>seb@sebnehmeconsultancy.example</li><li>+1 (345) 555-0134</li><li><a href="https://www.instagram.com/sebnehmerealestate/" target="_blank" rel="noopener">@sebnehmerealestate</a></li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -1060,7 +1003,6 @@ function setRegion(region){
 document.getElementById('geoSelect').addEventListener('change', (e)=> setRegion(e.target.value));
 
 async function detectGeo(){
-  const msgEl = document.getElementById('geoMessage');
   try{
     const resp = await fetch('https://ipapi.co/json/', {cache:'no-store'});
     if(!resp.ok) throw new Error('geo lookup failed');
@@ -1069,10 +1011,8 @@ async function detectGeo(){
     const map = {us:'us', ca:'ca', gb:'gb'};
     const region = map[code] || 'default';
     setRegion(region);
-    msgEl.textContent = `📍 ${data.country_name || 'Your region'}`;
   }catch(e){
     setRegion('us');
-    msgEl.textContent = "📍 Choose your region";
   }
 }
 detectGeo();
