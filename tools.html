@@ -900,6 +900,11 @@ document.getElementById('navToggle').addEventListener('click', ()=> overlay.clas
 document.getElementById('mobileClose').addEventListener('click', ()=> overlay.classList.remove('open'));
 overlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> overlay.classList.remove('open')));
 
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=> io.observe(el));
+
 document.querySelectorAll('.tool-tabs button').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     document.querySelectorAll('.tool-tabs button').forEach(b=>b.classList.remove('active'));
