@@ -61,6 +61,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://sebnehmeconsultancy.example/articles/cayman-islands-vs-portugal-relocation-tax.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sebnehmeconsultancy.example/articles/cayman-islands-vs-dubai-tax-comparison.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sebnehmeconsultancy.example/articles/cayman-islands-vs-staying-home-tax-comparison.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://sebnehmeconsultancy.example/legal-disclaimer.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>yearly</changefreq>

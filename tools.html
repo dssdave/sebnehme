@@ -398,6 +398,24 @@
     margin-top:22px;background:rgba(205,161,91,0.08);border:1px solid rgba(205,161,91,0.35);border-radius:16px;padding:26px;
   }
   .lead-gate-copy{font-size:14px;color:var(--gold-light);font-weight:500;margin-bottom:16px;}
+  .quiz-q{margin-bottom:26px;}
+  .quiz-q label{display:block;font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:12px;}
+  .quiz-options{display:flex;flex-wrap:wrap;gap:10px;}
+  .quiz-opt{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.8);
+    padding:11px 18px;border-radius:100px;font-size:13.5px;font-weight:500;cursor:pointer;transition:all .25s var(--ease);
+  }
+  .quiz-opt:hover{border-color:var(--gold);color:var(--white);}
+  .quiz-opt.selected{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:700;}
+  .quiz-result{margin-top:10px;background:rgba(47,143,125,0.1);border:1px solid rgba(47,143,125,0.35);border-radius:16px;padding:26px;text-align:center;}
+  .wealth-10yr{
+    margin-top:20px;background:rgba(205,161,91,0.08);border:1px solid rgba(205,161,91,0.35);border-radius:16px;padding:26px;
+  }
+  .wealth-10yr-label{font-size:12px;text-transform:uppercase;letter-spacing:0.6px;color:var(--gold-light);font-weight:700;margin-bottom:16px;}
+  .wealth-10yr-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:14px;}
+  .wealth-10yr-grid .r-num{font-family:'Fraunces',serif;font-size:32px;color:var(--white);font-weight:600;}
+  .wealth-10yr-grid .r-lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:0.8px;opacity:0.65;margin-top:4px;color:rgba(255,255,255,0.8);}
+  .wealth-10yr-note{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:16px;}
   .unlocked-cta{
     margin-top:22px;background:rgba(47,143,125,0.1);border:1px solid rgba(47,143,125,0.35);border-radius:16px;padding:26px;
   }
@@ -650,19 +668,95 @@
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a> / Calculators</div>
     <h1>Free Cayman Islands Relocation Calculators</h1>
-    <p>Three quick tools — tax savings, cost of living, and a residency day tracker. No signup, no email wall. Once you have your numbers, Seb can tell you exactly how to make it happen.</p>
+    <p>Four quick tools — a readiness quiz, tax savings, cost of living, and a residency day tracker. No signup, no email wall. Once you have your numbers, Seb can tell you exactly how to make it happen.</p>
   </div>
 </section>
 
 <section class="deep-bg" id="tools" style="padding:50px 0 90px;">
   <div class="wrap">
     <div class="tool-tabs">
-      <button class="active" data-tool="savings">💰 Tax Savings Estimator</button>
+      <button class="active" data-tool="quiz">🧭 Am I Ready? Quiz</button>
+      <button data-tool="savings">💰 Tax Savings Estimator</button>
       <button data-tool="cost">🏡 Cost of Living / Relocation Budget</button>
       <button data-tool="days">📅 Residency Day Tracker</button>
     </div>
 
-    <div class="tool-panel active" id="tool-savings">
+    <div class="tool-panel active" id="tool-quiz">
+      <div class="calc-card">
+        <div id="quizQuestions">
+          <div class="quiz-q" data-q="income">
+            <label>What best describes your income?</label>
+            <div class="quiz-options">
+              <button type="button" class="quiz-opt" data-val="founder">🚀 Business owner / founder</button>
+              <button type="button" class="quiz-opt" data-val="remote">💻 Remote-capable employee</button>
+              <button type="button" class="quiz-opt" data-val="investor">📈 Investor / trader</button>
+              <button type="button" class="quiz-opt" data-val="passive">🏖️ Retired / passive income</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="timeline">
+            <label>How soon are you thinking about moving?</label>
+            <div class="quiz-options">
+              <button type="button" class="quiz-opt" data-val="fast">⏱️ Within 6 months</button>
+              <button type="button" class="quiz-opt" data-val="medium">🗓️ 6–18 months</button>
+              <button type="button" class="quiz-opt" data-val="exploring">🔍 Just exploring for now</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="country">
+            <label>Where are you moving from?</label>
+            <div class="quiz-options">
+              <button type="button" class="quiz-opt" data-val="us">🇺🇸 United States</button>
+              <button type="button" class="quiz-opt" data-val="ca">🇨🇦 Canada</button>
+              <button type="button" class="quiz-opt" data-val="gb">🇬🇧 United Kingdom</button>
+              <button type="button" class="quiz-opt" data-val="other">🌐 Somewhere else</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="family">
+            <label>Who's moving with you?</label>
+            <div class="quiz-options">
+              <button type="button" class="quiz-opt" data-val="solo">🧍 Just me</button>
+              <button type="button" class="quiz-opt" data-val="couple">💑 Me + spouse/partner</button>
+              <button type="button" class="quiz-opt" data-val="family">👨‍👩‍👧 Family with kids</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="research">
+            <label>Have you looked into residency options yet?</label>
+            <div class="quiz-options">
+              <button type="button" class="quiz-opt" data-val="done">✅ Yes, done some research</button>
+              <button type="button" class="quiz-opt" data-val="some">🤔 A little, not in depth</button>
+              <button type="button" class="quiz-opt" data-val="none">❓ No idea where to start</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-gold" id="quizSubmitBtn" onclick="showQuizResult()" disabled>See My Result</button>
+
+        <div class="quiz-result" id="quizResult" style="display:none;">
+          <p class="unlocked-headline" id="quizResultHeadline"></p>
+          <p class="unlocked-sub" id="quizResultBody"></p>
+          <a href="#" id="quizWhatsappLink" target="_blank" rel="noopener" class="whatsapp-pill" style="margin:0 auto;">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.484 1.34 4.997L2 22l5.116-1.334a9.96 9.96 0 0 0 4.888 1.286h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.182-2.928-7.07a9.935 9.935 0 0 0-7.073-2.882zm5.848 15.845a8.302 8.302 0 0 1-11.75.005 8.269 8.269 0 0 1-2.44-5.853c0-4.585 3.732-8.317 8.32-8.317a8.264 8.264 0 0 1 5.856 2.436 8.263 8.263 0 0 1 2.435 5.855 8.302 8.302 0 0 1-2.42 5.874z"/></svg>
+            Message Seb With My Answers
+          </a>
+        </div>
+
+        <p class="disclaimer">*This quiz is a quick self-assessment to focus the conversation — it's not an eligibility determination or advice of any kind.</p>
+      </div>
+    <div class="lead-magnet-grid single" style="margin-top:22px;">
+      <div class="lm-card reveal">
+        <span class="lm-tag">📄 Free Guide</span>
+        <h3>The Cayman Insider List</h3>
+        <p>The 5 people you need in your corner before you move — Seb can introduce you to them.</p>
+        <button type="button" class="lm-cta" id="lmCta-insider" onclick="showLmForm('insider')">Get the Free PDF</button>
+        <div class="lm-form hide" id="lmForm-insider">
+          <input type="email" id="lmEmail-insider" placeholder="you@email.com">
+          <button type="button" onclick="unlockGuide('insider')">Send It</button>
+        </div>
+        <div class="lm-success" id="lmSuccess-insider">✅ Check your downloads — Seb will follow up directly too.</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="tool-panel" id="tool-savings">
       <div class="calc-card">
         <div class="field-row">
           <div>
@@ -686,6 +780,32 @@
             <div><div class="r-num" id="resHomeTax"></div><div class="r-lbl">Est. Home Tax / Year</div></div>
             <div><div class="r-num" id="resCaymanTax"></div><div class="r-lbl">Cayman Tax / Year</div></div>
             <div><div class="r-num" id="resSavings"></div><div class="r-lbl">Est. Annual Savings</div></div>
+          </div>
+        </div>
+
+        <div class="wealth-10yr" id="wealth10yr" style="display:none;">
+          <div class="wealth-10yr-label">🌴 10-Year Impact If You Made This Move Today</div>
+          <div class="wealth-10yr-grid">
+            <div><div class="r-num" id="res10yrSimple"></div><div class="r-lbl">Total Kept (10 Years, Not Invested)</div></div>
+            <div><div class="r-num" id="res10yrGrown"></div><div class="r-lbl">If Reinvested at ~7%/Yr</div></div>
+          </div>
+          <p class="wealth-10yr-note">Hypothetical illustration only — assumes your annual savings stay roughly constant and, in the second figure, get reinvested at a 7% average annual return. Not a guarantee, projection, or investment advice.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;">
+            <button type="button" class="btn btn-ghost" id="emailResultsBtn" onclick="emailMyResults()">📧 Email Me These Results</button>
+          </div>
+        </div>
+
+        <div class="lead-magnet-grid single" style="margin:22px auto 0;">
+          <div class="lm-card reveal">
+            <span class="lm-tag">📊 Free Excel Model</span>
+            <h3>The Full Cayman Relocation Financial Model</h3>
+            <p>An editable spreadsheet version of this calculator — tax savings, cost of living, and a 10-year projection you can adjust yourself.</p>
+            <button type="button" class="lm-cta" id="lmCta-model" onclick="showLmForm('model')">Get the Free Excel File</button>
+            <div class="lm-form hide" id="lmForm-model">
+              <input type="email" id="lmEmail-model" placeholder="you@email.com">
+              <button type="button" onclick="unlockGuide('model')">Send It</button>
+            </div>
+            <div class="lm-success" id="lmSuccess-model">✅ Check your downloads — Seb will follow up directly too.</div>
           </div>
         </div>
 
@@ -918,7 +1038,59 @@ document.querySelectorAll('.tool-tabs button').forEach(btn=>{
   });
 });
 
+// ---------- readiness quiz ----------
+const quizAnswers = {};
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  const key = q.dataset.q;
+  q.querySelectorAll('.quiz-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      q.querySelectorAll('.quiz-opt').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      quizAnswers[key] = btn.dataset.val;
+      const allAnswered = document.querySelectorAll('.quiz-q').length === Object.keys(quizAnswers).length;
+      document.getElementById('quizSubmitBtn').disabled = !allAnswered;
+    });
+  });
+});
+
+function showQuizResult(){
+  const a = quizAnswers;
+  const countryNames = { us:'the United States', ca:'Canada', gb:'the United Kingdom', other:'abroad' };
+  const incomeNames = { founder:'a business owner/founder', remote:'a remote-capable employee', investor:'an investor/trader', passive:'living on passive/retirement income' };
+
+  let tier = 'explore';
+  if((a.timeline === 'fast' || a.timeline === 'medium') && (a.income === 'founder' || a.income === 'investor')){
+    tier = 'strong';
+  } else if(a.timeline === 'fast' || a.timeline === 'medium' || a.research === 'done'){
+    tier = 'good';
+  }
+
+  const headlines = {
+    strong: "You're a strong fit for a fast-moving relocation.",
+    good: "You're in good shape to start mapping this out.",
+    explore: "You're early — and that's exactly the right time to start asking questions."
+  };
+  const bodies = {
+    strong: `Founders and investors moving within the next year and a half are exactly who Seb works with most. Given you're coming from ${countryNames[a.country] || 'abroad'}, the residency and tax mechanics have real nuance worth getting right from day one.`,
+    good: `You've got real momentum — whether it's your timeline or the research you've already done. The next step is usually a short conversation to see how your specific situation (${incomeNames[a.income] || 'your income'}, moving from ${countryNames[a.country] || 'abroad'}) maps onto the right residency route.`,
+    explore: `Plenty of people who eventually move start out "just exploring." The best move now is a low-pressure conversation to understand what's actually possible for someone in your position — no commitment, just clarity.`
+  };
+
+  document.getElementById('quizResultHeadline').textContent = headlines[tier];
+  document.getElementById('quizResultBody').textContent = bodies[tier];
+
+  const waText = encodeURIComponent(
+    `Hi Seb, I just took your readiness quiz. Quick summary: I'm ${incomeNames[a.income] || ''}, moving from ${countryNames[a.country] || 'abroad'}, timeline is ${a.timeline === 'fast' ? 'within 6 months' : a.timeline === 'medium' ? '6-18 months' : 'still exploring'}, and I'd like to talk through my situation.`
+  );
+  document.getElementById('quizWhatsappLink').href = 'https://wa.me/13455550134?text=' + waText;
+
+  document.getElementById('quizResult').style.display = 'block';
+  document.getElementById('quizResult').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
 const TAX_RATES = { us:0.42, ca:0.53, gb:0.47, default:0.40 };
+
+let lastCalc = null;
 
 function calcSavings(){
   const income = parseFloat(document.getElementById('incomeInput').value) || 0;
@@ -931,10 +1103,40 @@ function calcSavings(){
   document.getElementById('resCaymanTax').textContent = '$0';
   document.getElementById('resSavings').textContent = '$' + Math.round(savings).toLocaleString();
 
+  // ---------- 10-year wealth impact ----------
+  const years = 10;
+  const growthRate = 0.07;
+  const simple10yr = savings * years;
+  const grown10yr = savings * (((Math.pow(1 + growthRate, years) - 1)) / growthRate);
+
+  document.getElementById('res10yrSimple').textContent = '$' + Math.round(simple10yr).toLocaleString();
+  document.getElementById('res10yrGrown').textContent = '$' + Math.round(grown10yr).toLocaleString();
+  document.getElementById('wealth10yr').style.display = 'block';
+
+  lastCalc = { income, country, homeTax, savings, simple10yr, grown10yr };
+
   const resultWrap = document.getElementById('resultWrap');
   resultWrap.style.display = 'block';
   document.getElementById('unlockedCta').style.display = 'block';
   resultWrap.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function emailMyResults(){
+  if(!lastCalc){ return; }
+  const countryNames = { us:'United States', ca:'Canada', gb:'United Kingdom', default:'my home country' };
+  const c = lastCalc;
+  const subject = encodeURIComponent('My Cayman Islands Tax Savings Estimate');
+  const body = encodeURIComponent(
+    'Here\'s my Cayman Islands tax savings estimate from sebnehmeconsultancy.com:\n\n' +
+    '- Annual income: $' + Math.round(c.income).toLocaleString() + '\n' +
+    '- Home country: ' + (countryNames[c.country] || c.country) + '\n' +
+    '- Est. home tax / year: $' + Math.round(c.homeTax).toLocaleString() + '\n' +
+    '- Est. annual savings in Cayman: $' + Math.round(c.savings).toLocaleString() + '\n' +
+    '- Total kept over 10 years (not invested): $' + Math.round(c.simple10yr).toLocaleString() + '\n' +
+    '- If reinvested at ~7%/yr over 10 years: $' + Math.round(c.grown10yr).toLocaleString() + '\n\n' +
+    '(Illustrative estimate only, not tax advice.)'
+  );
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
 }
 
 const HOUSING = {
@@ -1001,7 +1203,8 @@ const LM_GUIDES = {
   tax: {file:'downloads/5-ways-to-legally-reduce-your-taxes-in-cayman.pdf', name:'5-Ways-to-Legally-Reduce-Your-Taxes-Cayman.pdf'},
   mistakes: {file:'downloads/5-mistakes-that-cost-cayman-relocators-thousands.pdf', name:'5-Mistakes-That-Cost-Relocators-Thousands.pdf'},
   insider: {file:'downloads/cayman-insider-list-5-people-you-need-to-know.pdf', name:'Cayman-Insider-List-5-People.pdf'},
-  tip: {file:'downloads/little-known-tip-to-save-money-moving-to-cayman.pdf', name:'Little-Known-Cayman-Money-Tip.pdf'}
+  tip: {file:'downloads/little-known-tip-to-save-money-moving-to-cayman.pdf', name:'Little-Known-Cayman-Money-Tip.pdf'},
+  model: {file:'downloads/cayman-relocation-financial-model.xlsx', name:'Cayman-Relocation-Financial-Model.xlsx'}
 };
 
 

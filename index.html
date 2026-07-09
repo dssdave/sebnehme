@@ -441,6 +441,13 @@
   .whatsapp-pill:hover{transform:translateY(-2px);box-shadow:0 16px 34px -8px rgba(205,161,91,0.55);}
   .whatsapp-pill svg{color:#1f8a4c;flex-shrink:0;}
 
+  .contact-reassurance{
+    display:flex;flex-direction:column;gap:10px;background:rgba(47,143,125,0.05);
+    border:1px solid rgba(47,143,125,0.15);border-radius:16px;padding:18px 22px;margin-bottom:26px;text-align:left;
+  }
+  .contact-reassurance p{margin:0;font-size:13.5px;line-height:1.6;color:#44504d;font-weight:400;}
+  .contact-reassurance p strong{color:var(--ink);}
+  .contact-reassurance .cr-icon{margin-right:7px;}
   .contact-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:30px;}
   .quick-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:22px;}
   .quick-chip{
@@ -758,7 +765,7 @@
     <div class="section-head reveal" style="margin:0 auto 40px;text-align:center;max-width:680px;">
       <div class="eyebrow-line" style="justify-content:center;"><span>Free Downloads</span></div>
       <h2>Free Guides Worth Grabbing</h2>
-      <p>Four short, practical PDFs Seb put together himself — pick one, tell us where to send it, done.</p>
+      <p>Short, practical downloads Seb put together himself — pick one, tell us where to send it, done.</p>
     </div>
     <div class="lead-magnet-grid reveal-stagger">
       <div class="lm-card reveal">
@@ -804,6 +811,17 @@
           <button type="button" onclick="unlockGuide('tip')">Send It</button>
         </div>
         <div class="lm-success" id="lmSuccess-tip">✅ Check your downloads — Seb will follow up directly too.</div>
+      </div>
+      <div class="lm-card reveal">
+        <span class="lm-tag">📊 Free Excel Model</span>
+        <h3>The Full Cayman Relocation Financial Model</h3>
+        <p>An editable spreadsheet — tax savings, cost of living, and a 10-year wealth projection you can adjust with your own numbers.</p>
+        <button type="button" class="lm-cta" id="lmCta-model" onclick="showLmForm('model')">Get the Free Excel File</button>
+        <div class="lm-form hide" id="lmForm-model">
+          <input type="email" id="lmEmail-model" placeholder="you@email.com">
+          <button type="button" onclick="unlockGuide('model')">Send It</button>
+        </div>
+        <div class="lm-success" id="lmSuccess-model">✅ Check your downloads — Seb will follow up directly too.</div>
       </div>
     </div>
   </div>
@@ -949,6 +967,11 @@
     <div class="eyebrow-line" style="justify-content:center;"><span>Let's Talk</span></div>
     <h2>Got a Question? Get in Touch.</h2>
     <p style="color:#5c6864;margin:14px 0 30px;font-weight:300;font-size:16px;">However's easiest for you — Seb answers personally, usually within the hour.</p>
+
+    <div class="contact-reassurance">
+      <p><span class="cr-icon">💬</span><strong>What actually happens next:</strong> your first message gets a real, specific answer from Seb — not a script. If it looks like a fit, the next step is a short call to map out your numbers and timeline. No pressure, no house-hunting until you're ready.</p>
+      <p><span class="cr-icon">📆</span><strong>Worth knowing:</strong> Seb personally takes on a limited number of new relocations each quarter to keep things hands-on — reaching out sooner rather than later just means more room on his calendar.</p>
+    </div>
 
     <div class="quick-chips">
       <a href="https://wa.me/13455550134?text=Hi%20Seb%2C%20I%27m%20considering%20buying%20property%20in%20Cayman%20%E2%80%94%20can%20we%20talk%3F" target="_blank" rel="noopener" class="quick-chip">🏠 Buying a Property</a>
@@ -1117,7 +1140,8 @@ const LM_GUIDES = {
   tax: {file:'downloads/5-ways-to-legally-reduce-your-taxes-in-cayman.pdf', name:'5-Ways-to-Legally-Reduce-Your-Taxes-Cayman.pdf'},
   mistakes: {file:'downloads/5-mistakes-that-cost-cayman-relocators-thousands.pdf', name:'5-Mistakes-That-Cost-Relocators-Thousands.pdf'},
   insider: {file:'downloads/cayman-insider-list-5-people-you-need-to-know.pdf', name:'Cayman-Insider-List-5-People.pdf'},
-  tip: {file:'downloads/little-known-tip-to-save-money-moving-to-cayman.pdf', name:'Little-Known-Cayman-Money-Tip.pdf'}
+  tip: {file:'downloads/little-known-tip-to-save-money-moving-to-cayman.pdf', name:'Little-Known-Cayman-Money-Tip.pdf'},
+  model: {file:'downloads/cayman-relocation-financial-model.xlsx', name:'Cayman-Relocation-Financial-Model.xlsx'}
 };
 
 
